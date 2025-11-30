@@ -4,22 +4,22 @@
 #include <string.h>
 
 // Structure to hold question and answer
-struct Question {
+typedef struct{
     char question[200];
     char optionA[100];
     char optionB[100];
     char optionC[100];
     char optionD[100];
     char correctAnswer;
-};
+}Question;
 
 // Fisher-Yates shuffle algorithm
-void shuffleQuestions(struct Question questions[], int n) {
+void shuffleQuestions(Question questions[], int n) {
     for (int i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
         
         // Swap questions[i] and questions[j]
-        struct Question temp = questions[i];
+        Question temp = questions[i];
         questions[i] = questions[j];
         questions[j] = temp;
     }
@@ -27,7 +27,7 @@ void shuffleQuestions(struct Question questions[], int n) {
 
 int main() {
     // Initialize 50 questions from your screenshots
-    struct Question questionBank[50] = {
+    Question questionBank[50] = {
         {"Who developed the C programming language?", "Dennis Ritchie", "Bjarne Stroustrup", "James Gosling", "Ken Thompson", 'A'},
         {"What is the size of char data type in C?", "1 byte", "2 bytes", "4 bytes", "8 bytes", 'A'},
         {"Which header file is required for printf() function?", "stdlib.h", "stdio.h", "string.h", "math.h", 'B'},
@@ -37,15 +37,15 @@ int main() {
         {"Which loop is guaranteed to execute at least once?", "for loop", "while loop", "do-while loop", "none of these", 'C'},
         {"What is the range of int data type (typically)?", "-32768 to 32767", "-2147483648 to 2147483647", "0 to 65535", "depends on system", 'B'},
         {"Which keyword is used to prevent variable modification?", "static", "const", "volatile", "extern", 'B'},
-        {"What is the output of printf(%%d, 5/2)?", "2", "2.5", "3", "error", 'A'},
+        {"What is the output of printf(%d, 5/2)?", "2", "2.5", "3", "error", 'A'},
         
         {"What is the size of float in C?", "2 bytes", "4 bytes", "8 bytes", "16 bytes", 'B'},
-        {"Which format specifier is used for unsigned int?", "%%d", "%%u", "%%i", "%%x", 'B'},
+        {"Which format specifier is used for unsigned int?", "%d", "%u", "%i", "%x", 'B'},
         {"What is the default value of static variables?", "0", "1", "garbage value", "undefined", 'A'},
         {"Which storage class has local scope but retains value?", "auto", "static", "extern", "register", 'B'},
         {"What is the size of double data type?", "4 bytes", "8 bytes", "12 bytes", "16 bytes", 'B'},
         {"Which operator has highest precedence?", "*", "+", "()", "/", 'C'},
-        {"What does %%x format specifier represent?", "decimal", "octal", "hexadecimal", "character", 'C'},
+        {"What does %x format specifier represent?", "decimal", "octal", "hexadecimal", "character", 'C'},
         {"Which is not a storage class in C?", "auto", "static", "volatile", "extern", 'C'},
         {"What is the ASCII value of 'A'?", "65", "97", "64", "96", 'A'},
         {"Which data type can store both positive and negative?", "unsigned int", "signed int", "unsigned char", "both A and B", 'B'},
@@ -72,7 +72,7 @@ int main() {
         {"Which is correct syntax for single-line comment?", "/* comment */", "// comment", "# comment", "* comment", 'B'},
         
         {"Which data type holds decimal numbers?", "int", "double", "char", "long", 'B'},
-        {"What will be output of: printf(%%c, 'A'+1);?", "A", "B", "1", "ASCII value", 'B'},
+        {"What will be output of: printf(%c, 'A'+1);?", "A", "B", "1", "ASCII value", 'B'},
         {"Which is a conditional control structure?", "switch", "goto", "for", "do-while", 'A'},
         {"Which function is used to compare strings?", "strcmp()", "compare()", "strcompare()", "cmps()", 'A'},
         {"What is the result of sizeof(float)?", "2", "4", "8", "Depends", 'B'},
@@ -92,13 +92,13 @@ int main() {
     // Shuffle all 50 questions
     shuffleQuestions(questionBank, 50);
     
-    printf("   WELCOME TO THE QUIZ ARENA \n");
-    printf("\n You will be asked 10 random questions.\n");
-    printf("\n Each correct answer = 1 mark \n \n");
+    printf("\n\t\t***WELCOME_TO_THE_QUIZ_ARENA***\n");
+    printf("\n\t*INSTRUCTION* You_Will_be_asked_ten_Random_Question");
+    printf("\n\t\t  {Each_Correct_Answer = 1 mark}\n\n");
     
     // Display first 10 questions one by one
     for (int i = 0; i < 10; i++) {
-        printf("Question %d: %s \n", i + 1, questionBank[i].question);
+        printf("\nQuestion %d: %s", i + 1, questionBank[i].question);
         printf("\nA.  %s ", questionBank[i].optionA);
         printf("\nB.  %s", questionBank[i].optionB);
         printf("\nC.  %s", questionBank[i].optionC);
@@ -123,9 +123,9 @@ int main() {
     }
     
     // Display Final Score 
-    printf("   QUIZ COMPLETED!\n ");
-    printf("Your final score: %d out of 10 ", score);
-    printf("\n Percentage: %.2f%%",(score * 100.0) / 10);
+    printf("\n\t    ***QUIZ_COMPLETED!***\n");
+    printf("\tYour final score: %d out of 10", score);
+    printf("\n\t     Percentage: %.2f%%\n\n",(score * 100.0) / 10);
     
     
     return 0;

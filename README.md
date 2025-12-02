@@ -49,5 +49,5 @@ gcc quiz.c -o quiz.exe
 
 ### Execute the compiled program to start the quiz:
 ```
-quiz exe
+quiz.exe
 ```

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <ctype.h>
 
 // Structure to hold question and answer
 struct Question{
@@ -52,7 +53,7 @@ int main() {
 
         {"What is the correct syntax for if statement?", "if condition then", "if (condition)", "if condition:", "if [condition]", 'B'},
         {"The 'continue' statement is used to:", "Exit function", "Skip iteration", "Stop program", "Pause program", 'B'},
-        {"The escape sequence for new line is:", "\\t", "\\n", "\\t", "\\s", 'B' },
+        {"The escape sequence for new line is:", "\t", "\n", "\t", "\s", 'B' },
         {"Which operator is used for bitwise AND?", "&&", "&", "|", "&&&", 'B'},
         {"Which is not a valid C constant?", "const", "#define", "enum", "constant", 'D'},
         {"What is the use of break statement?", "exits program", "exits loop", "skips iteration", "continues loop", 'B'},
@@ -104,13 +105,11 @@ int main() {
         printf("\nC.  %s", questionBank[i].optionC);
         printf("\nD.  %s", questionBank[i].optionD);
         printf("\nYour answer (A/B/C/D): ");
-        scanf(" %s", &userAnswer);
+        scanf(" %c", &userAnswer);
 
         // Convert to uppercase for comparison
-        if (userAnswer >= 'a' && userAnswer <= 'd') {
-            userAnswer = userAnswer - 32;
-        }
-
+        userAnswer = toupper(userAnswer);
+        
         // Check answer
         if (userAnswer == questionBank[i].correctAnswer) {
             printf("Correct! +1 mark \n");
@@ -126,7 +125,6 @@ int main() {
     printf("\n\t    ***QUIZ_COMPLETED!***\n");
     printf("\tYour final score: %d out of 10", score);
     printf("\n\t     Percentage: %.2f%%\n\n",(score * 10.0));
-
 
     return 0;
 }

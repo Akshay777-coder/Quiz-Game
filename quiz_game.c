@@ -53,7 +53,7 @@ int main() {
 
         {"What is the correct syntax for if statement?", "if condition then", "if (condition)", "if condition:", "if [condition]", 'B'},
         {"The 'continue' statement is used to:", "Exit function", "Skip iteration", "Stop program", "Pause program", 'B'},
-        {"The escape sequence for new line is:", "\t", "\n", "\t", "\s", 'B' },
+        {"The escape sequence for new line is:", "\\t", "\\n", "\\x", "\\s", 'B' },
         {"Which operator is used for bitwise AND?", "&&", "&", "|", "&&&", 'B'},
         {"Which is not a valid C constant?", "const", "#define", "enum", "constant", 'D'},
         {"What is the use of break statement?", "exits program", "exits loop", "skips iteration", "continues loop", 'B'},
